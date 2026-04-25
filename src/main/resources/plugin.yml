@@ -1,0 +1,10 @@
+name: TPOEvent
+version: '2025.12'
+main: me.roland882.tpoevent.TPOEvent
+api-version: '1.21'
+authors: [ Roland882 ]
+depends:
+  - Citizens
+website: https://site.tposmp.online
+commands:
+  mmm:
