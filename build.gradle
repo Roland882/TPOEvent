@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id("xyz.jpenilla.run-paper") version "2.3.1"
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 group = 'me.roland882'
@@ -12,10 +13,21 @@ repositories {
         name = "papermc-repo"
         url = "https://repo.papermc.io/repository/maven-public/"
     }
+    maven {
+        url = "https://mvn.lib.co.nz/public"
+        content {
+            includeGroup("me.libraryaddict.disguises")
+        }
+    }
+    maven {
+        url = "https://repo.citizensnpcs.co/"
+    }
 }
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.21.10-R0.1-SNAPSHOT")
+    compileOnly 'me.libraryaddict.disguises:libsdisguises:11.0.13'
+    compileOnly 'net.citizensnpcs:citizensapi:2.0.32-SNAPSHOT'
 }
 
 tasks {
@@ -25,6 +37,10 @@ tasks {
         // Your plugin's jar (or shadowJar if present) will be used automatically.
         minecraftVersion("1.21")
     }
+}
+shadowJar {
+    archiveClassifier.set('')
+    relocate 'me.libraryaddict.disguise', 'me.roland882.libs.disguise'
 }
 
 def targetJavaVersion = 21
