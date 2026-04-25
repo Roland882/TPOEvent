@@ -29,6 +29,7 @@ public class MinionCommand implements CommandExecutor {
             return false;
         }
 
+        //comment this part out or add another username to use the command
         if (!player.getName().equalsIgnoreCase("Roland882")) {
             player.sendMessage(mm.deserialize("<bold><gray>[<gold>TPO <dark_red>SMP<gray>]<reset> <red>You don't have access to this command!"));
             return false;
